@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Editor</title>
+    <link rel="stylesheet" href="{% static 'style/main.css' %}">
+</head>
+<body>
+    
+
+    
+    <div class="left">
+        <div class="image">
+            <!-- iamge append here -->
+        </div>
+        <button id="UploadImg" type="button">Upload Photo</button>
+    </div>
+
+
+    <form class="right" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        <input type="file" hidden id="ImageFile" name="image">
+        <div class="in">
+            <p>Brithness</p>
+            <input type="range" min="0" name="brightness" max="20" value="10" id="brithnessVal">
+        </div>
+        
+        <div class="in">
+            <p>Contrast</p>
+            <input type="range" min="0" max="20" name="contrast" value="10" id="contrastVal">
+        </div>
+       
+        <div class="in">
+            <p>Saturate</p>
+            <input type="range" min="0" max="20" value="10" name="saturate" id="saturateVal">
+        </div>
+
+        <div class="check">
+
+            <div class="r">
+                <p>Grayscale</p>
+                <input type="checkbox"  name="has_grayscale" id="has_grayscale">
+            </div>
+            
+            <div class="r">
+                <p>Sepia</p>
+                <input type="checkbox" name="has_sepia" id="has_sepia">
+            </div>
+
+
+        </div>
+
+        <button id="submit" type="submit">Download</button>
+    </form>    
+
+
+    <script src="{% static 'js/actions.js' %}"></script>
+
+
+</body>
+</html>
